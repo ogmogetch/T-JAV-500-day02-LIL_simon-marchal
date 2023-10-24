@@ -1,5 +1,3 @@
-package ex_02;
-
 public class Gecko {
     public String name;
 

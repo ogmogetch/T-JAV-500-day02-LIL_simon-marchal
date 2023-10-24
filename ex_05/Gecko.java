@@ -1,25 +1,6 @@
 public class Gecko {
-    /*
-    Unborn Gecko, if the age is 0 ;
-3 Baby Gecko, if the age is 1 or 2 ;
-3 Adult Gecko, if the age is between 3 and 10 ;
-Old Gecko, if the age is between 11 and 13 ;
-3 Impossible Gecko, otherwise.
-     */
     private String name;
     private int age;
-
-
-
-    public Gecko() {
-        this.name = "Unknown";
-        System.out.println("Hello!");
-    }
-
-    public Gecko(String name) {
-        this.name = name;
-        System.out.println("Hello " + name + "!");
-    }
 
     public Gecko(String name, int age) {
         this.name = name;
@@ -27,7 +8,15 @@ Old Gecko, if the age is between 11 and 13 ;
         System.out.println("Hello " + name + "!");
     }
 
+    public Gecko(String name) {
+        this.name = name;
+        System.out.println("Hello " + name + "!");
+    }
 
+    public Gecko() {
+        this.name = "Unknown";
+        System.out.println("Hello!");
+    }
 
     public String getName() {
         return this.name;
@@ -70,4 +59,15 @@ Old Gecko, if the age is between 11 and 13 ;
                 break;
         }
     }
+
+    public void hello(String name) {
+        System.out.println("Hello " + name + ", I'm " + this.name + "!");
+    }
+
+    public void hello(int nb) {
+        for (int i = 0; i < nb; i++) {
+            System.out.println("Hello, I'm " + this.name + "!");
+        }
+    }
+
 }

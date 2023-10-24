@@ -1,5 +1,3 @@
-package ex_03;
-
 public class Gecko {
     private String name;
 
@@ -17,6 +15,7 @@ this.name = "Unknown";
         return this.name;
     }
 }
+
 /*
 public class Example {
     public static void main(String[] args) {
