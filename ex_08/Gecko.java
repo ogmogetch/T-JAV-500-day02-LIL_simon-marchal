@@ -1,5 +1,3 @@
-package ex_08;
-
 public class Gecko {
     /*
     Let’s implement a new fraternize method that takes one parameter.
