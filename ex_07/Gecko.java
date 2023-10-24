@@ -69,12 +69,14 @@ public class Gecko {
         } else {
             System.out.println("I can't eat this!");
         }
+        // Assurez-vous que l'énergie ne dépasse pas 100 ou ne descend pas en dessous de 0
         if (this.energy > 100) {
             this.energy = 100;
         } else if (this.energy < 0) {
             this.energy = 0;
         }
     }
+
 
     public void work() {
         if (this.energy >= 25) {
@@ -89,8 +91,16 @@ public class Gecko {
     private int energy = 100;
 
     public void setEnergy(int energy) {
-        this.energy = energy;
+        // Assurez-vous que l'énergie ne dépasse pas 100 ou ne descend pas en dessous de 0
+        if (energy > 100) {
+            this.energy = 100;
+        } else if (energy < 0) {
+            this.energy = 0;
+        } else {
+            this.energy = energy;
+        }
     }
+
 
     public int getEnergy() {
         return this.energy;

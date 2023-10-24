@@ -2,6 +2,8 @@ public class Gecko {
     private String name;
     private int age;
 
+    private int energy = 100;
+
     public Gecko(String name, int age) {
         this.name = name;
         this.age = age;
@@ -69,6 +71,7 @@ public class Gecko {
         } else {
             System.out.println("I can't eat this!");
         }
+        // Assurez-vous que l'énergie ne dépasse pas 100 ou ne descend pas en dessous de 0
         if (this.energy > 100) {
             this.energy = 100;
         } else if (this.energy < 0) {
@@ -76,10 +79,15 @@ public class Gecko {
         }
     }
 
-    private int energy = 100;
-
     public void setEnergy(int energy) {
-        this.energy = energy;
+        // Assurez-vous que l'énergie ne dépasse pas 100 ou ne descend pas en dessous de 0
+        if (energy > 100) {
+            this.energy = 100;
+        } else if (energy < 0) {
+            this.energy = 0;
+        } else {
+            this.energy = energy;
+        }
     }
 
     public int getEnergy() {
