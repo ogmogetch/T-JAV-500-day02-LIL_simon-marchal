@@ -83,7 +83,7 @@ public class Gecko {
             System.out.println("I'm working T.T");
             this.energy -= 9;
         } else {
-            System.out.println("Heyyy... I'm too sleepy, better take a nap!");
+            System.out.println("Heyyy I'm too sleepy, better take a nap!");
             this.energy += 50;
         }
     }
