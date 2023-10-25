@@ -1,20 +1,7 @@
 public class Gecko {
-    /*
-    Let’s implement a new fraternize method that takes one parameter.
-If the parameter is a Gecko Object, our Gecko will be happy and go drink with his friend.
-It will cost both of them 30 Energy.
-They will both say (starting with the current Gecko) I'm going to drink with <otherName>!
-If one of them doesn’t have enough energy:
-3 it must display Sorry <otherName>, I'm too tired to go out tonight. ;
-3 the other will then display Oh! That's too bad, another time then!.
-If both of them are too tired to go out, they will both display Not today!.
-If the parameter is a Snake and if Gecko’s energy is:
-3 greater than or equal to 10, the Gecko displays LET'S RUN AWAY!!! and it’s energy is set to 0.
-3 less than 10, the the Gecko plays dead and displays ...
-Feel free to add any method that you reckon necessary.
-     */
     private String name;
     private int age;
+    private int energy = 100;
 
     public Gecko(String name, int age) {
         this.name = name;
@@ -23,18 +10,80 @@ Feel free to add any method that you reckon necessary.
     }
 
     public Gecko(String name) {
-        this.name = name;
-        System.out.println("Hello " + name + "!");
+        this(name, 0);
     }
 
     public Gecko() {
         this.name = "Unknown";
+        this.age = 0;
         System.out.println("Hello!");
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getEnergy() {
+        return energy;
+    }
+
+    public void setEnergy(int energy) {
+        if (energy > 100) {
+            this.energy = 100;
+        } else if (energy < 0) {
+            this.energy = 0;
+        } else {
+            this.energy = energy;
+        }
+    }
+
+    public void eat(String food) {
+        switch (food.toLowerCase()) {
+            case "meat":
+                setEnergy(energy + 10);
+                System.out.println("Yummy!");
+                break;
+            case "vegetable":
+                setEnergy(energy - 10);
+                System.out.println("Erk!");
+                break;
+            default:
+                System.out.println("I can't eat this!");
+                break;
+        }
+    }
+
+
+    public void work() {
+        if (energy >= 25) {
+            setEnergy(energy - 9);
+            System.out.println("I'm working T.T");
+        } else {
+            setEnergy(energy + 50);
+            System.out.println("Heyyy I'm too sleepy, better take a nap!");
+        }
+    }
+
+    public void hello(String recipient) {
+        System.out.println("Hello " + recipient + ", I'm " + name + "!");
+    }
+
+    public void hello(int times) {
+        for (int i = 0; i < times; i++) {
+            System.out.println("Hello, I'm " + name + "!");
+        }
+    }
 
     public void status() {
-        switch (this.age) {
+        switch (age) {
             case 0:
                 System.out.println("Unborn Gecko");
                 break;
@@ -63,108 +112,31 @@ Feel free to add any method that you reckon necessary.
         }
     }
 
-    public void hello(String name) {
-        System.out.println("Hello " + name + ", I'm " + this.name + "!");
-    }
-
-    public void hello(int nb) {
-        for (int i = 0; i < nb; i++) {
-            System.out.println("Hello, I'm " + this.name + "!");
-        }
-    }
-
-    public void eat(String food) {
-        if (food.equalsIgnoreCase("Meat")) {
-            System.out.println("Yummy!");
-            this.energy += 10;
-        } else if (food.equalsIgnoreCase("Vegetable")) {
-            System.out.println("Erk!");
-            this.energy -= 10;
-        } else {
-            System.out.println("I can't eat this!");
-        }
-        // Assurez-vous que l'énergie ne dépasse pas 100 ou ne descend pas en dessous de 0
-        if (this.energy > 100) {
-            this.energy = 100;
-        } else if (this.energy < 0) {
-            this.energy = 0;
-        }
-    }
-
-
-
-
-    public void work() {
-        if (this.energy >= 25) {
-            System.out.println("I'm working T.T");
-            this.energy -= 9;
-        } else {
-            System.out.println("Heyyy... I'm too sleepy, better take a nap!");
-            this.energy += 50;
-        }
-    }
-
     public void fraternize(Object friend) {
         if (friend instanceof Gecko) {
-            Gecko friendGecko = (Gecko) friend;
-            if (this.energy >= 30 && friendGecko.getEnergy() >= 30) {
-                this.setEnergy(this.energy - 30);
-                friendGecko.setEnergy(friendGecko.getEnergy() - 30);
-                System.out.println("I'm going to drink with " + friendGecko.getName() + "!");
+            Gecko geckoFriend = (Gecko) friend;
+            if (this.energy >= 30 && geckoFriend.energy >= 30) {
+                this.setEnergy(energy - 30);
+                geckoFriend.setEnergy(geckoFriend.energy - 30);
+                System.out.println("I'm going to drink with " + geckoFriend.name + "!");
                 System.out.println("I'm going to drink with " + this.name + "!");
-            } else if (!(this.energy >= 30) && friendGecko.getEnergy() >= 30) {
-                System.out.println("Sorry " + friendGecko.getName() + ", I'm too tired to go out tonight.");
-                System.out.println("Oh! That's too bad, another time then!");
-            } else if (this.energy >= 30 && !(friendGecko.getEnergy() >= 30)) {
+            } else if (this.energy < 30 && geckoFriend.energy < 30) {
+                System.out.println("Not today!");
+                System.out.println("Not today!");
+            } else if (this.energy < 30) {
+                System.out.println("Sorry " + geckoFriend.name + ", I'm too tired to go out tonight.");
+                System.out.println("Oh! That's too bad, another time then!.");
+            } else {
                 System.out.println("Sorry " + this.name + ", I'm too tired to go out tonight.");
                 System.out.println("Oh! That's too bad, another time then!");
-            } else {
-                System.out.println("Not today!");
-                System.out.println("Not today!");
             }
         } else if (friend instanceof Snake) {
             if (this.energy >= 10) {
                 System.out.println("LET'S RUN AWAY!!!");
-                this.setEnergy(0);
-            }
-            else {
+                this.energy = 0;
+            } else {
                 System.out.println("...");
             }
         }
     }
-
-
-    private int energy = 100;
-
-    public void setEnergy(int energy) {
-        // Assurez-vous que l'énergie ne dépasse pas 100 ou ne descend pas en dessous de 0
-        if (energy > 100) {
-            this.energy = 100;
-        } else if (energy < 0) {
-            this.energy = 0;
-        } else {
-            this.energy = energy;
-        }
-    }
-
-    public int getEnergy() {
-        return this.energy;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public int getAge() {
-        return this.age;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return this.name;
-    }
 }
-
