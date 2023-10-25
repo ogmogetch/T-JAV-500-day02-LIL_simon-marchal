@@ -1,8 +1,7 @@
 public class Gecko {
     private String name;
     private int age;
-
-    private int energy = 100;
+    private int energy = 100; 
 
     public Gecko(String name, int age) {
         this.name = name;
@@ -10,19 +9,73 @@ public class Gecko {
         System.out.println("Hello " + name + "!");
     }
 
+   
     public Gecko(String name) {
-        this.name = name;
-        System.out.println("Hello " + name + "!");
+        this(name, 0); 
     }
+
 
     public Gecko() {
         this.name = "Unknown";
+        this.age = 0;
         System.out.println("Hello!");
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getEnergy() {
+        return energy;
+    }
+
+    public void setEnergy(int energy) {
+        if (energy > 100) {
+            this.energy = 100;
+        } else if (energy < 0) {
+            this.energy = 0;
+        } else {
+            this.energy = energy;
+        }
+    }
+
+    public void eat(String food) {
+        switch (food.toLowerCase()) {
+            case "meat":
+                setEnergy(energy + 10);
+                System.out.println("Yummy!");
+                break;
+            case "vegetable":
+                setEnergy(energy - 10);
+                System.out.println("Erk!");
+                break;
+            default:
+                System.out.println("I can't eat this!");
+                break;
+        }
+    }
+
+
+    public void hello(String recipient) {
+        System.out.println("Hello " + recipient + ", I'm " + name + "!");
+    }
+
+    public void hello(int times) {
+        for (int i = 0; i < times; i++) {
+            System.out.println("Hello, I'm " + name + "!");
+        }
+    }
 
     public void status() {
-        switch (this.age) {
+        switch (age) {
             case 0:
                 System.out.println("Unborn Gecko");
                 break;
@@ -49,64 +102,5 @@ public class Gecko {
                 System.out.println("Impossible Gecko");
                 break;
         }
-    }
-
-    public void hello(String name) {
-        System.out.println("Hello " + name + ", I'm " + this.name + "!");
-    }
-
-    public void hello(int nb) {
-        for (int i = 0; i < nb; i++) {
-            System.out.println("Hello, I'm " + this.name + "!");
-        }
-    }
-
-    public void eat(String food) {
-        if (food.equalsIgnoreCase("Meat")) {
-            System.out.println("Yummy!");
-            this.energy += 10;
-        } else if (food.equalsIgnoreCase("Vegetable")) {
-            System.out.println("Erk!");
-            this.energy -= 10;
-        } else {
-            System.out.println("I can't eat this!");
-        }
-        // Assurez-vous que l'énergie ne dépasse pas 100 ou ne descend pas en dessous de 0
-        if (this.energy > 100) {
-            this.energy = 100;
-        } else if (this.energy < 0) {
-            this.energy = 0;
-        }
-    }
-
-    public void setEnergy(int energy) {
-        // Assurez-vous que l'énergie ne dépasse pas 100 ou ne descend pas en dessous de 0
-        if (energy > 100) {
-            this.energy = 100;
-        } else if (energy < 0) {
-            this.energy = 0;
-        } else {
-            this.energy = energy;
-        }
-    }
-
-    public int getEnergy() {
-        return this.energy;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public int getAge() {
-        return this.age;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return this.name;
     }
 }

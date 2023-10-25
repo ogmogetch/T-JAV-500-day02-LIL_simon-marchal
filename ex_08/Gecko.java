@@ -112,7 +112,7 @@ public class Gecko {
         }
     }
 
-    public void fraternize(Object friend) {
+       public void fraternize(Object friend) {
         if (friend instanceof Gecko) {
             Gecko geckoFriend = (Gecko) friend;
             if (this.energy >= 30 && geckoFriend.energy >= 30) {
@@ -126,7 +126,7 @@ public class Gecko {
             } else if (this.energy < 30) {
                 System.out.println("Sorry " + geckoFriend.name + ", I'm too tired to go out tonight.");
                 System.out.println("Oh! That's too bad, another time then!.");
-            } else {
+            } else {          
                 System.out.println("Sorry " + this.name + ", I'm too tired to go out tonight.");
                 System.out.println("Oh! That's too bad, another time then!");
             }

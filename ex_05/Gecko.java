@@ -9,21 +9,21 @@ public class Gecko {
     }
 
     public Gecko(String name) {
-        this.name = name;
-        System.out.println("Hello " + name + "!");
+        this(name, 0); 
     }
 
     public Gecko() {
         this.name = "Unknown";
+        this.age = 0;
         System.out.println("Hello!");
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public int getAge() {
-        return this.age;
+        return age;
     }
 
     public void setAge(int age) {
@@ -31,7 +31,7 @@ public class Gecko {
     }
 
     public void status() {
-        switch (this.age) {
+        switch (age) {
             case 0:
                 System.out.println("Unborn Gecko");
                 break;
@@ -60,14 +60,15 @@ public class Gecko {
         }
     }
 
-    public void hello(String name) {
-        System.out.println("Hello " + name + ", I'm " + this.name + "!");
+    public void hello(String recipient) {
+        System.out.println("Hello " + recipient + ", I'm " + name + "!");
     }
 
-    public void hello(int nb) {
-        for (int i = 0; i < nb; i++) {
-            System.out.println("Hello, I'm " + this.name + "!");
+    public void hello(int times) {
+        for (int i = 0; i < times; i++) {
+            System.out.println("Hello, I'm " + name + "!");
         }
     }
-
 }
+
+
